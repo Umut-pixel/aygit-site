@@ -1,0 +1,1 @@
+# DEPRECATED - Bu klasör tamamen kaldırılmıştır

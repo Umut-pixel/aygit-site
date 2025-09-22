@@ -1,0 +1,475 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Aygıt Technologies Corporate Brand Colors */
+  --aygit-primary: #0365F4;      /* Aygıt Primary Blue */
+  --aygit-secondary: #0091BB;    /* Aygıt Secondary Blue */
+  --aygit-gradient-start: #0365F4;
+  --aygit-gradient-end: #0091BB;
+  
+  --font-size: 14px;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: var(--aygit-primary);
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #475569;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --accent: #dbeafe;
+  --accent-foreground: var(--aygit-primary);
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(3, 101, 244, 0.1);
+  --input: transparent;
+  --input-background: #f8fafc;
+  --switch-background: #e2e8f0;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--aygit-primary);
+  --chart-1: var(--aygit-primary);
+  --chart-2: var(--aygit-secondary);
+  --chart-3: #1e3a8a;
+  --chart-4: #3b82f6;
+  --chart-5: #60a5fa;
+  --radius: 0.625rem;
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: var(--aygit-primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #475569;
+  --sidebar-border: rgba(3, 101, 244, 0.1);
+  --sidebar-ring: var(--aygit-primary);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.543 0.232 262.017);
+  --chart-2: oklch(0.456 0.274 261.728);
+  --chart-3: oklch(0.391 0.297 262.066);
+  --chart-4: oklch(0.615 0.206 262.344);
+  --chart-5: oklch(0.723 0.149 262.890);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.543 0.232 262.017);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  *:focus-visible {
+    outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    input {
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.4;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Professional focus styles */
+:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Professional scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--chart-2);
+}
+
+/* Aygıt Technologies Custom Utilities */
+@layer utilities {
+  /* Brand Gradients */
+  .bg-aygit-gradient {
+    background: linear-gradient(135deg, var(--aygit-primary), var(--aygit-secondary));
+  }
+  
+  .bg-aygit-gradient-vertical {
+    background: linear-gradient(180deg, var(--aygit-primary), var(--aygit-secondary));
+  }
+  
+  .bg-aygit-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--aygit-primary), var(--aygit-secondary));
+  }
+  
+  .text-aygit-gradient {
+    background: linear-gradient(135deg, var(--aygit-primary), var(--aygit-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Brand Colors */
+  .bg-aygit-primary {
+    background-color: var(--aygit-primary);
+  }
+  
+  .bg-aygit-secondary {
+    background-color: var(--aygit-secondary);
+  }
+  
+  .text-aygit-primary {
+    color: var(--aygit-primary);
+  }
+  
+  .text-aygit-secondary {
+    color: var(--aygit-secondary);
+  }
+  
+  .border-aygit-primary {
+    border-color: var(--aygit-primary);
+  }
+  
+  .border-aygit-secondary {
+    border-color: var(--aygit-secondary);
+  }
+  
+  /* Logo Color Utilities - for making same logo appear as different colors */
+  .logo-white {
+    filter: brightness(0) invert(1);
+  }
+  
+  .logo-black {
+    filter: brightness(0) invert(0);
+  }
+  
+  .logo-primary {
+    filter: brightness(0) saturate(100%) invert(36%) sepia(96%) saturate(2076%) hue-rotate(208deg) brightness(95%) contrast(95%);
+  }
+  
+  /* Corporate Shadows */
+  .shadow-aygit {
+    box-shadow: 0 4px 14px 0 rgba(3, 101, 244, 0.15);
+  }
+  
+  .shadow-aygit-lg {
+    box-shadow: 0 10px 25px -3px rgba(3, 101, 244, 0.1), 0 4px 6px -2px rgba(3, 101, 244, 0.05);
+  }
+  
+  /* Animation utilities for corporate feel */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Accordion animations */
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+  
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+  
+  /* Border utilities for Tailwind V4 compatibility */
+  .border-border {
+    border-color: var(--border);
+  }
+  
+  .border-input {
+    border-color: var(--input);
+  }
+  
+  .border-ring {
+    border-color: var(--ring);
+  }
+  
+  /* Background utilities */
+  .bg-background {
+    background-color: var(--background);
+  }
+  
+  .bg-foreground {
+    background-color: var(--foreground);
+  }
+  
+  .bg-card {
+    background-color: var(--card);
+  }
+  
+  .bg-popover {
+    background-color: var(--popover);
+  }
+  
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  
+  .bg-secondary {
+    background-color: var(--secondary);
+  }
+  
+  .bg-muted {
+    background-color: var(--muted);
+  }
+  
+  .bg-accent {
+    background-color: var(--accent);
+  }
+  
+  .bg-destructive {
+    background-color: var(--destructive);
+  }
+  
+  /* Text utilities */
+  .text-background {
+    color: var(--background);
+  }
+  
+  .text-foreground {
+    color: var(--foreground);
+  }
+  
+  .text-card-foreground {
+    color: var(--card-foreground);
+  }
+  
+  .text-popover-foreground {
+    color: var(--popover-foreground);
+  }
+  
+  .text-primary {
+    color: var(--primary);
+  }
+  
+  .text-primary-foreground {
+    color: var(--primary-foreground);
+  }
+  
+  .text-secondary-foreground {
+    color: var(--secondary-foreground);
+  }
+  
+  .text-muted-foreground {
+    color: var(--muted-foreground);
+  }
+  
+  .text-accent-foreground {
+    color: var(--accent-foreground);
+  }
+  
+  .text-destructive {
+    color: var(--destructive);
+  }
+  
+  .text-destructive-foreground {
+    color: var(--destructive-foreground);
+  }
+  
+  /* Outline utilities */
+  .outline-ring {
+    outline-color: var(--ring);
+  }
+  
+  /* Scrollbar utilities */
+  .scrollbar-hidden {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes accordion-down {
+  from { 
+    height: 0; 
+    opacity: 0;
+    transform: translateY(-10px); 
+  }
+  to { 
+    height: auto; 
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+
+@keyframes accordion-up {
+  from { 
+    height: auto; 
+    opacity: 1;
+    transform: translateY(0); 
+  }
+  to { 
+    height: 0; 
+    opacity: 0;
+    transform: translateY(-10px); 
+  }
+}
+
+/* Corporate Typography Enhancements */
+@layer base {
+  /* Enhanced heading styles for corporate look */
+  h1.corporate {
+    background: linear-gradient(135deg, var(--aygit-primary), var(--aygit-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  
+  /* Button enhancements */
+  .btn-aygit-primary {
+    background: linear-gradient(135deg, var(--aygit-primary), var(--aygit-secondary));
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-aygit-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -3px rgba(3, 101, 244, 0.3);
+  }
+}

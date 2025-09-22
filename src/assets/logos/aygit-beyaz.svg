@@ -1,0 +1,29 @@
+<svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- AYGIT Technologies White Logo -->
+  
+  <!-- A -->
+  <path d="M5 35L12.5 15H17.5L25 35H20L18.5 31H11.5L10 35H5ZM13 27H17L15 22L13 27Z" fill="white"/>
+  
+  <!-- Y -->  
+  <path d="M30 15H35L40 22L45 15H50L42.5 25V35H37.5V25L30 15Z" fill="white"/>
+  
+  <!-- G -->
+  <path d="M60 26C60 31.5 65.5 36 71 36H77V31H71C68.5 31 66 28.5 66 26V24C66 21.5 68.5 19 71 19H77C79.5 19 82 21.5 82 24V26H76V31H87V24C87 18.5 81.5 14 77 14H71C65.5 14 60 18.5 60 24V26Z" fill="white"/>
+  
+  <!-- I -->
+  <path d="M95 15H100V35H95V15Z" fill="white"/>
+  
+  <!-- T -->
+  <path d="M110 15H135V20H125V35H120V20H110V15Z" fill="white"/>
+  
+  <!-- Technologies Text -->
+  <text x="145" y="28" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="white">Technologies</text>
+  
+  <!-- Accent Line -->
+  <line x1="5" y1="40" x2="195" y2="40" stroke="white" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Innovation Dots -->
+  <circle cx="180" cy="12" r="2" fill="white" opacity="0.6"/>
+  <circle cx="188" cy="12" r="2" fill="white" opacity="0.8"/>  
+  <circle cx="196" cy="12" r="2" fill="white"/>
+</svg>
