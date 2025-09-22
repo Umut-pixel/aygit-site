@@ -1,18 +1,11 @@
 // Assets Index - Aygıt Technologies
 // Clean and simplified asset exports for production use
 
-// Import all assets
-import AygitTechnologiesLogoSrc from './logos/aygit-technologies-logo.png';
-import AygitLogoBlackSrc from './logos/aygit-site.png';
-import AygitLogoWhiteSrc from './logos/aygit-beyaz.png';
-import AygitTechnologiesLogoBlackSrc from './logos/aygit-technologies-logo-black.png';
-import AygitTechnologiesLogoWhiteSrc from './logos/aygit-technologies-logo-white.png';
-import PlaceholderImageSrc from './images/placeholder.png';
-import PlaceholderIconSrc from './icons/placeholder.svg';
+// Public assets are referenced by path strings
 
 // Essential exports only
-export { default as PlaceholderImage } from './images/placeholder.png';
-export { default as PlaceholderIcon } from './icons/placeholder.svg';
+export const PlaceholderImage = '/images/placeholder.png';
+export const PlaceholderIcon = '/icons/placeholder.svg';
 
 // Unsplash image URLs as constants
 export const UNSPLASH_IMAGES = {
@@ -27,11 +20,11 @@ export const UNSPLASH_IMAGES = {
 // Asset paths configuration
 export const ASSET_PATHS = {
   logos: {
-    main: AygitTechnologiesLogoSrc,
-    black: AygitLogoBlackSrc,
-    white: AygitLogoWhiteSrc,
-    technologiesBlack: AygitTechnologiesLogoBlackSrc,
-    technologiesWhite: AygitTechnologiesLogoWhiteSrc
+    main: '/logos/aygit-technologies-logo.png',
+    black: '/logos/aygit-site.png',
+    white: '/logos/aygit-beyaz.png',
+    technologiesBlack: '/logos/aygit-technologies-logo-black.png',
+    technologiesWhite: '/logos/aygit-technologies-logo-white.png'
   },
   images: {
     hero: UNSPLASH_IMAGES.modernOfficeWorkspace,
@@ -40,10 +33,10 @@ export const ASSET_PATHS = {
     development: UNSPLASH_IMAGES.modernWebDevelopment,
     digital: UNSPLASH_IMAGES.digitalTransformationBusiness,
     mobile: UNSPLASH_IMAGES.mobileResponsiveDesign,
-    placeholder: PlaceholderImageSrc
+    placeholder: PlaceholderImage
   },
   icons: {
-    placeholder: PlaceholderIconSrc
+    placeholder: PlaceholderIcon
   }
 } as const;
 
@@ -116,12 +109,12 @@ export interface AssetMetadata {
   height?: number;
 }
 
-// Direct logo exports for easy component usage
-export const AygitTechnologiesLogo = AygitTechnologiesLogoSrc;
-export const AygitLogoBlack = AygitLogoBlackSrc;
-export const AygitLogoWhite = AygitLogoWhiteSrc;
-export const AygitTechnologiesLogoBlack = AygitTechnologiesLogoBlackSrc;
-export const AygitTechnologiesLogoWhite = AygitTechnologiesLogoWhiteSrc;
+// Direct logo exports for easy component usage (public paths)
+export const AygitTechnologiesLogo = '/logos/aygit-technologies-logo.png';
+export const AygitLogoBlack = '/logos/aygit-site.png';
+export const AygitLogoWhite = '/logos/aygit-beyaz.png';
+export const AygitTechnologiesLogoBlack = '/logos/aygit-technologies-logo-black.png';
+export const AygitTechnologiesLogoWhite = '/logos/aygit-technologies-logo-white.png';
 
 // Export all unsplash images as individual exports for backward compatibility
 export const ModernOfficeWorkspace = UNSPLASH_IMAGES.modernOfficeWorkspace;

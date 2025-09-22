@@ -7,8 +7,8 @@ const MotionDiv = motion.div as any;
 import { Button } from "./ui/button";
 import { Menu, X, ChevronDown, Palette, Smartphone, Globe, BarChart3, Users, Shield, Settings, ArrowRight, Play, FileText, Headphones, Award, Phone } from "lucide-react";
 // Logo imports - white logo for dark backgrounds, black logo for light backgrounds  
-import AygitLogoBlack from "../assets/logos/aygit-site.png";
-import AygitLogoWhite from "../assets/logos/aygit-beyaz.png";
+import AygitLogoBlack from "../public/logos/aygit-site.png";
+import AygitLogoWhite from "../public/logos/aygit-beyaz.png";
 import { navigateTo } from "../router/Router";
 import { useContactCallbackForm } from "./ContactCallbackForm";
 

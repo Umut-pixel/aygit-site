@@ -3,7 +3,7 @@ import React from 'react';
 import { MotionDiv, MotionImg, MotionP, AnimatePresence } from "./MotionWrapper";
 import { useState, useEffect } from "react";
 import { Zap, Code, Globe, Server } from "lucide-react";
-import AygitLogoWhite from "../assets/logos/aygit-technologies-logo-white.png";
+const AygitLogoWhite = "/logos/aygit-technologies-logo-white.png";
 
 interface PreloaderProps {
   onComplete: () => void;

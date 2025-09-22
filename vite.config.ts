@@ -134,19 +134,7 @@ export default defineConfig({
     react({ jsxRuntime: 'automatic' }),
     // bulletproofMotionDomExtermination(), // Geçici olarak devre dışı
     // bulletproofHtmlTransform(),  // Geçici olarak devre dışı
-    tailwindcss({
-      content: [
-        './index.html',
-        './App.tsx', 
-        './components/**/*.{js,ts,jsx,tsx}',
-        './pages/**/*.{js,ts,jsx,tsx}',
-        './router/**/*.{js,ts,jsx,tsx}',
-        './utils/**/*.{js,ts,jsx,tsx}',
-        './hooks/**/*.{js,ts,jsx,tsx}',
-        './constants/**/*.{js,ts,jsx,tsx}',
-        './**/*.{js,ts,jsx,tsx}'
-      ]
-    })
+    tailwindcss()
   ],
   optimizeDeps: {
     include: ['react', 'react-dom', 'framer-motion', 'lucide-react'],
@@ -160,14 +148,32 @@ export default defineConfig({
     cssMinify: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          motion: ['framer-motion'],
-          ui: ['lucide-react', 'class-variance-authority', 'clsx', 'tailwind-merge']
+        manualChunks(id) {
+          // Third-party deps
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) return 'vendor-react'
+            if (id.includes('lucide-react')) return 'vendor-icons'
+            if (id.includes('framer-motion')) return 'motion'
+            return 'vendor'
+          }
+
+          // App-level heavy chunks
+          if (id.includes('/components/Preloader')) return 'preloader'
+          if (
+            id.includes('/components/Framer') ||
+            id.includes('/components/Motion') ||
+            id.includes('/components/FramerMotion')
+          ) {
+            return 'motion-ui'
+          }
+
+          return undefined
         }
       }
       // external kısmı geçici olarak kaldırıldı
     }
+    ,
+    chunkSizeWarningLimit: 1000
   },
   server: { 
     port: 5173, 
