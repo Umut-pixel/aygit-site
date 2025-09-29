@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from "./FramerMotionSafe";
 import { MapPin, Users, TrendingUp, Globe } from "lucide-react";
 import { Badge } from "./ui/badge";
@@ -51,6 +51,28 @@ const totalUsers = activeCities.reduce((sum, city) => sum + city.users, 0);
 
 export function TurkeyMapSection() {
   const { openForm, CallbackFormComponent } = useContactCallbackForm();
+  // Track rendered map size to convert percent positions to pixel coords for SVG lines
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const [mapSize, setMapSize] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
+
+  useEffect(() => {
+    const measure = () => {
+      if (mapRef.current) {
+        const rect = mapRef.current.getBoundingClientRect();
+        setMapSize({ w: rect.width, h: rect.height });
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
+
+  const toUnit = (value: string | number): number => {
+    if (typeof value === 'number') return value; // Assume already unit fraction (0..1) or pixel
+    if (value.endsWith('%')) return parseFloat(value) / 100;
+    const n = Number(value);
+    return Number.isFinite(n) ? n : 0;
+  };
   
   return (
     <section className="py-16 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
@@ -158,7 +180,7 @@ export function TurkeyMapSection() {
           {/* Main Map Container */}
           <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-lg rounded-3xl p-3 md:p-6 border border-blue-500/20 shadow-2xl">
             {/* Map Background with Real Turkey Map */}
-            <div className="relative aspect-[5/3] md:aspect-[4/2.5] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 min-h-[400px] md:min-h-[480px]">
+            <div ref={mapRef} className="relative aspect-[5/3] md:aspect-[4/2.5] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 min-h-[400px] md:min-h-[480px]">
               {/* Real Turkey Map Background */}
               <div className="absolute inset-0">
                 <img 
@@ -184,7 +206,7 @@ export function TurkeyMapSection() {
                   }}
                   viewport={{ once: true }}
                   className="absolute group cursor-pointer z-20"
-                  style={city.position}
+                  style={{ left: city.position.left, top: city.position.top }}
                 >
                   {/* Outer Glow Ring */}
                   <motion.div
@@ -317,10 +339,10 @@ export function TurkeyMapSection() {
                 {activeCities.slice(0, 3).map((city, index) => (
                   <motion.line
                     key={`line-${index}`}
-                    x1={city.position.left}
-                    y1={city.position.top}
-                    x2={activeCities[(index + 1) % 3].position.left}
-                    y2={activeCities[(index + 1) % 3].position.top}
+                    x1={toUnit(city.position.left) * mapSize.w}
+                    y1={toUnit(city.position.top) * mapSize.h}
+                    x2={toUnit(activeCities[(index + 1) % 3].position.left) * mapSize.w}
+                    y2={toUnit(activeCities[(index + 1) % 3].position.top) * mapSize.h}
                     stroke="url(#lineGradient)"
                     strokeWidth="1"
                     strokeDasharray="2,4"

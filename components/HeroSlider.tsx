@@ -22,7 +22,7 @@ import {
 const slides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1623715537863-7b1441e0e2e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwb2ZmaWNlJTIwd29ya3NwYWNlfGVufDF8fHx8MTc1NTk4NzgyNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/slider-bg-2024.jpg",
     title: "Kurumsal Web Siteniz",
     subtitle: "Profesyonel Web Altyapısı",
     description: "Modern ve profesyonel kurumsal web sitenizi oluşturun. Mobil uyumlu tasarım, güvenli altyapı, SEO optimizasyonu ve yönetim paneli ile dijital kimliğinizi güçlendirin.",
@@ -37,7 +37,7 @@ const slides = [
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1726607424598-139ff3391ce8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwdHJhbnNmb3JtYXRpb24lMjBidXNpbmVzc3xlbnwxfHx8fDE3NTYwMDA5MTN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "",
     title: "Kurumsal Portal Çözümleri",
     subtitle: "Dijital Dönüşüm",
     description: "Çalışanlarınız, müşterileriniz ve iş ortaklarınız için güçlü web portalları. Kullanıcı yönetimi, dokümantasyon sistemi ve iş akışı entegrasyonları ile verimliliği artırın.",

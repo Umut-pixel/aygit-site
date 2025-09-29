@@ -313,7 +313,7 @@ export function Footer() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
         viewport={{ once: true }}
-        className="relative z-10 py-6 border-t border-white/10 bg-black/20"
+        className="relative z-10 py-6 md:py-6 lg:py-6 border-t border-white/10 bg-black/20 min-h-[100px] md:min-h-auto"
       >
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
