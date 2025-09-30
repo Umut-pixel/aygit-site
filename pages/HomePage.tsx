@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeroSliderSimple } from "../components/HeroSliderSimple";
+import { HeroSlider } from "../components/HeroSlider";
 import { AboutSection } from "../components/AboutSection";
 import { ServicesSection } from "../components/ServicesSection";
 import { TurkeyMapSection } from "../components/TurkeyMapSection";
@@ -10,7 +10,7 @@ export function HomePage() {
   return (
     <main>
       <div id="hero">
-        <HeroSliderSimple />
+        <HeroSlider />
       </div>
       <div id="hizmetler">
         <ServicesSection />

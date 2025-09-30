@@ -3,7 +3,7 @@
 // ZERO EXTERNAL DEPENDENCIES - ZERO MOTION-DOM TRIGGERS
 
 import { useEffect } from "react";
-import { nuclearDevLog, getNuclearEnvironmentInfo, isNuclearDevelopment } from "../utils/nuclearSafeEnvironment";
+import { devLog as nuclearDevLog, getNuclearEnvironmentInfo, isDevelopment as isNuclearDevelopment } from "../utils/environmentUtils";
 
 export default function DevOnlyLogger() {
   useEffect(() => {

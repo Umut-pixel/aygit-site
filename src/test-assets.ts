@@ -1,1 +1,0 @@
-// Bu dosya silinmiştir

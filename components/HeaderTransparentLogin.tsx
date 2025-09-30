@@ -1,1 +1,0 @@
-// This file has been removed as we now use HeaderTransparent for both homepage and login page

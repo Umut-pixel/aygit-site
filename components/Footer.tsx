@@ -23,7 +23,7 @@ import {
   Settings
 } from "lucide-react";
 // Logo imports - white logo for dark backgrounds, black logo for light backgrounds  
-import AygitLogoWhite from "../public/logos/aygit-technologies-logo-white.png";
+import { AygitTechnologiesLogoWhite as AygitLogoWhite } from "../assets";
 import { navigateTo } from "../router/Router";
 
 const footerLinks = {

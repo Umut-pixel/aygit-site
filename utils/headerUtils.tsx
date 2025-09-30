@@ -3,7 +3,7 @@ import { HeaderWithMegaMenu } from "../components/HeaderWithMegaMenu";
 import { HeaderWithMegaMenuDark } from "../components/HeaderWithMegaMenuDark";
 import { HeaderWithMegaMenuLight } from "../components/HeaderWithMegaMenuLight";
 import { LIGHT_HEADER_PAGES } from "../constants/pageRoutes";
-import { ultraDevLog } from "./ultraSafeEnvironment";
+import { devLog as ultraDevLog } from "./environmentUtils";
 
 /**
  * Determines which header component to use based on the current path

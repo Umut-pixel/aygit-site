@@ -1,7 +1,7 @@
 // 💀 FINAL NUCLEAR ELIMINATION: 1735913000000
 // 💀 NUCLEAR CACHE BUSTER: 1735912400000
 import { useState, useEffect } from 'react';
-import { ultraDevLog } from '../utils/ultraSafeEnvironment';
+import { devLog as ultraDevLog } from '../utils/environmentUtils';
 
 export function usePathTracking(): string {
   const [currentPath, setCurrentPath] = useState<string>(() => {
