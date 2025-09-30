@@ -1,0 +1,70 @@
+// BACKUP: This file was duplicate of /App.tsx - moved to backup
+// Original content was identical to root App.tsx
+// This file is no longer used in the project
+
+import { useState, useEffect } from "react";
+import { Footer } from "../components/Footer";
+import { Preloader } from "../components/Preloader";
+import { Router } from "../router/Router";
+import { usePathTracking } from "../hooks/usePathTracking";
+import { selectHeader, shouldUseInnerPageBackground } from "../utils/headerUtils";
+import { NO_HEADER_FOOTER_PAGES } from "../constants/pageRoutes";
+
+export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const currentPath = usePathTracking();
+
+  console.log("🚀 APP RENDER - isLoading:", isLoading, "currentPath:", currentPath);
+
+  // Handle path redirects after component mounts to avoid setState during render
+  useEffect(() => {
+    if (!isLoading) {
+      const currentLocation = window.location.pathname;
+      
+      // Redirect preview page to homepage
+      if (currentLocation === '/preview_page.html') {
+        console.log("🔄 PREVIEW PAGE DETECTED - Redirecting to homepage");
+        window.history.replaceState({}, '', '/');
+        return;
+      }
+      
+      // Force homepage path if needed
+      if (!currentLocation || currentLocation === '' || currentLocation === '/') {
+        console.log("🏠 ENSURING HOMEPAGE PATH");
+        // Ensure we're on the homepage
+        if (window.location.pathname !== '/') {
+          window.history.replaceState({}, '', '/');
+        }
+      }
+    }
+  }, [isLoading]);
+
+  const handlePreloaderComplete = () => {
+    console.log("✅ PRELOADER COMPLETE - Switching to Homepage!");
+    setIsLoading(false);
+  };
+
+  const isInnerPage = shouldUseInnerPageBackground(currentPath);
+  const shouldHideHeaderFooter = NO_HEADER_FOOTER_PAGES.includes(currentPath);
+
+  if (isLoading) {
+    return <Preloader onComplete={handlePreloaderComplete} />;
+  }
+
+  // Special pages without header and footer
+  if (shouldHideHeaderFooter) {
+    return (
+      <div className="min-h-screen">
+        <Router />
+      </div>
+    );
+  }
+
+  return (
+    <div className={`min-h-screen ${isInnerPage ? 'bg-white' : ''}`}>
+      {selectHeader(currentPath)}
+      <Router />
+      <Footer />
+    </div>
+  );
+}
